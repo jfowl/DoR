@@ -1,5 +1,5 @@
 <template>
-  <div id="cyroot" class="w-full h-full fixed"></div>
+  <div id="cyroot" class="w-full h-full fixed bg-white"></div>
 </template>
 
 <script lang="ts">
@@ -228,8 +228,8 @@ export default {
                'min-zoomed-font-size': 10,
               "curve-style": "straight",
               "target-arrow-shape": "triangle",
-              "line-color": "#9dbaea",
-              "target-arrow-color": "#9dbaea",
+              "line-color": "#bfdcfc",
+              "target-arrow-color": "#bfdcfc",
             },
           },
           {
