@@ -4,16 +4,9 @@
         
         <p class="mt-5 mb-5">We are thankful to our data collectors to take the time and contribute to the effort. </p>
 
-        <table class="m-1 table-auto text-m bg-opacity-40 bg-white mx-auto my-auto">
-            <tr>
-                <th class="text-left px-2 pt-1">Name</th>
-                <th class="text-right px-2 pt-1">Papers inspected</th>
-            </tr>
-            <tr v-for="(contributor, index) in contributors" :key="index">
-                <td class="text-left px-2"><a :href="'http://github.com/' + contributor.entry">{{ contributor.entry }}</a></td>
-                <td class="text-right px-2">{{ contributor.frequency }}</td>
-            </tr>
-        </table>
+        <p class="bg-yellow-300">
+            ANONYMIZED
+        </p>
 
     </div>
 </template>

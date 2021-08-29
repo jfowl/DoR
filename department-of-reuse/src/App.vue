@@ -26,12 +26,11 @@
         "
       >
         <p class="text-xs">
-          This is a community effort started by Maria Teresa Baldassarre, Neil
-          Ernst, Ben Hermann, and Tim Menzies.
+          This is a community effort started by <span class="bg-yellow-300">ANONYMIZED</span>.
         </p>
         <p class="text-xs">
           Please feel free to
-          <a class="text-blue-600" href="https://github.com/bhermann/DoR"
+          <a class="text-blue-600" href="https://anonymous.4open.science/r/DoR-B29E"
             >comment or contribute on GitHub</a
           >.
         </p>
