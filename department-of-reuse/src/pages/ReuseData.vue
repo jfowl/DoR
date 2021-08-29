@@ -4,22 +4,24 @@
     <div v-if="isLoading">
       <p>Loading data ...</p>
     </div>
-    <div v-else class="">
-        <p>Lorem ipsum</p>
-        <p>Lorem ipsum</p>
+    <div v-else class="pb-10">
+        <DataTable :rows="rows" :columns="columns" />
     </div>
   </div>
 </template>
 <script lang="ts">
+import DataTable from "@/components/DataTable.vue";
 import { defineComponent, onBeforeMount, ref } from "vue";
 
 import reuseJson from "../assets/data/reuse.json";
 import Reuse, { ReuseFromJson } from "../backend/models/Reuse";
 
+
 export default defineComponent({
   name: "ReuseData",
-  components: {  },
+  components: { DataTable },
   setup() {
+
     const isLoading = ref(false);
     const rows = ref(new Array<Reuse>());
 
@@ -37,14 +39,22 @@ export default defineComponent({
         {
           prop: "sourceDOI",
           name: "Source Paper",
+          class: "text-left align-top",
         },
         {
           prop: "type",
           name: "Type",
+          class: "text-left align-top",
         },
         {
           prop: "reusedDOI",
           name: "Target Paper",
+          class: "text-left align-top",
+        },
+        {
+          prop: "alternativeID",
+          name: "Alternative ID",
+          class: "text-left overflow-hidden break-all",
         }
     ];
 
