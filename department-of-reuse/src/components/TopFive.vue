@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h2 class="text-base bg-opacity-80 bg-blue-200">Researchers</h2>
-
+    <h2 class="text-base bg-opacity-80 bg-blue-200" v-on:click="open.value = !open.value">Researchers <button class="float-right" v-on:click="open = !open">{{ open ? "🔼" : "🔽"  }}</button></h2>
+    
+    <div v-if="open">
     <h3 class="text-sm bg-opacity-40 bg-blue-200">Most reused (R+)</h3>
       <div v-if="isLoading">
         <p>Loading...</p>
@@ -78,6 +79,7 @@
           </tr>
           </table>
       </div>
+      </div>
   </div>
 </template>
 <script lang="ts">
@@ -102,6 +104,7 @@ export default {
     const isLoading = ref(false);
     const researchers = ref({} as HistogramContainer<Author>);
     const publications = ref({} as HistogramContainer<Work>);
+    const open = ref(true);
     
     onBeforeMount(async () => {
       isLoading.value = true;
@@ -120,7 +123,7 @@ export default {
       isLoading.value = false;
     });
 
-    return { isLoading, researchers, publications };
+    return { isLoading, researchers, publications, open };
   }
 }
 </script>
