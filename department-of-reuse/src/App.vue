@@ -10,7 +10,7 @@
     <div v-else class="bg-logo bg-no-repeat bg-cover bg-center">
       <Navigation />
       <!-- <navbar />-->
-      <div class="bg-gray-50 bg-opacity-95 min-h-screen ">
+      <div class="bg-white bg-opacity-95 min-h-screen ">
         <router-view />
       </div>
 
