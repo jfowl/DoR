@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2 class="text-base bg-opacity-80 bg-blue-200" v-on:click="open.value = !open.value">Researchers <button class="float-right" v-on:click="open = !open">{{ open ? "🔼" : "🔽"  }}</button></h2>
+    <h2 class="text-base bg-opacity-80 bg-blue-200">Researchers<button class="float-right" v-on:click="openResearchers = !openResearchers">{{ openResearchers ? "🔼" : "🔽"  }}</button></h2>
     
-    <div v-if="open">
+    <div v-if="openResearchers">
     <h3 class="text-sm bg-opacity-40 bg-blue-200">Most reused (R+)</h3>
       <div v-if="isLoading">
         <p>Loading...</p>
@@ -27,8 +27,10 @@
           </tr>
         </table>
       </div>
-    <h2 class="text-base bg-opacity-80 bg-blue-200 mt-3">Artifacts</h2>
+    </div>
+    <h2 class="text-base bg-opacity-80 bg-blue-200 mt-3">Artifacts<button class="float-right" v-on:click="openArtifacts = !openArtifacts">{{ openArtifacts ? "🔼" : "🔽"  }}</button></h2>
 
+    <div v-if="openArtifacts">
     <h3 class="text-sm bg-opacity-40 bg-blue-200">Most reused (R+)</h3>
       <div v-if="isLoading">
         <p>Loading...</p>
@@ -104,7 +106,8 @@ export default {
     const isLoading = ref(false);
     const researchers = ref({} as HistogramContainer<Author>);
     const publications = ref({} as HistogramContainer<Work>);
-    const open = ref(true);
+    const openResearchers = ref(true);
+    const openArtifacts = ref(true);
     
     onBeforeMount(async () => {
       isLoading.value = true;
@@ -123,7 +126,7 @@ export default {
       isLoading.value = false;
     });
 
-    return { isLoading, researchers, publications, open };
+    return { isLoading, researchers, publications, openResearchers, openArtifacts };
   }
 }
 </script>
