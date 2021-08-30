@@ -7,8 +7,8 @@
         class="border bg-blue-500 text-gray-50"
         :class="column.class"
       >
-        <button class="float-left">🔎</button>
-        <input type="search" v-model="column.filter" class="text-black w-3/4 p-1">
+        <button class="float-left" v-if="hasFilter">🔎</button>
+        <input type="search" v-model="column.filter" class="text-black w-3/4 p-1" v-if="hasFilter">
         <button
           v-on:click="if (sortCriterion == column.prop) {sortAscending = !sortAscending; } else { sortAscending = true } sortCriterion = column.prop;"
           class="text-gray-50 font-bold"
@@ -44,6 +44,10 @@ export default {
   props: {
     rows: Array as PropType<Array<any>>,
     columns: Array as PropType<Array<ColumnDefinition>>,
+    hasFilter : {
+        type: Boolean,
+        default: false
+    }
   },
   setup(props: any) {
     const sortCriterion = ref("");
@@ -63,9 +67,11 @@ export default {
 
       internalRows.value = props.rows.filter((r : any) => {
           const mismatchedFilters = internalColumns.value
-                .filter(c => c.filter != "")
+                .filter(c => !(c.filter === undefined) && c.filter != "")
                 .filter(c => {
-                    if (r[`${c.prop}`].includes(c.filter)) return false;
+                    const prop : string = `${c.prop}`;
+                    console.log("My prop: ", prop, c.filter);
+                    if (r[prop].includes(c.filter)) return false;
                     else return true;
                 });
           return mismatchedFilters.length == 0 ? true : false;
@@ -76,7 +82,14 @@ export default {
             const firstProp = a[sortCriterion.value];
             const secondProp = b[sortCriterion.value];
 
-            return firstProp.localeCompare(secondProp) * (sortAscending.value ? 1 : -1);
+            if (typeof(firstProp) == "string") {
+                return firstProp.localeCompare(secondProp) * (sortAscending.value ? 1 : -1);
+            } else {
+                if (firstProp < secondProp) return (sortAscending.value ? -1 : 1);
+                if (secondProp > firstProp) return (sortAscending.value ? 1 : -1);
+                return 0;
+            }
+            
         });
       }
     },
