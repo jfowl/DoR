@@ -54,7 +54,7 @@ export default defineComponent({
         {
           prop: "alternativeID",
           name: "Alternative ID",
-          class: "text-left overflow-hidden break-all",
+          class: "text-left overflow-hidden break-all w-full",
         }
     ];
 
