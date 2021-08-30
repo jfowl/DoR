@@ -5,7 +5,7 @@
       <p>Loading data ...</p>
     </div>
     <div v-else class="pb-10">
-        <DataTable :rows="rows" :columns="columns" />
+        <DataTable :rows="rows" :columns="columns" :hasFilter="true" />
     </div>
   </div>
 </template>
