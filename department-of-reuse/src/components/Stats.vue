@@ -183,9 +183,6 @@ export default {
       }
     }
 
-<<<<<<< HEAD
-    return { open, papersInspected, targetDoiNodes, targetGitHubNodes, targetArxivNodes, targetWebsiteNodes, edgeTypes };
-=======
     return {
       open,
       papersInspected,
@@ -201,7 +198,6 @@ export default {
       filteredArxivNodes,
       filteredWebsiteNodes,
     };
->>>>>>> feature/filtered-stats
   },
 };
 </script>
