@@ -99,7 +99,7 @@ export default {
 
         rows.value = publications.map((e) => {
           return {
-            name: `${e.entry.title.join(":")} ${e.entry.subtitle ? e.entry.subtitle!.join(":") : ""} `,
+            name: `${e.entry.title.join(":")} `,
             frequency: e.frequency,
           };
         });
